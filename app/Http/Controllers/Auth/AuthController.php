@@ -3,24 +3,27 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Api\ApiResponseException;
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use EasyWeChat\Factory;
-use EasyWeChat\Kernel\Exceptions\InvalidConfigException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Tymon\JWTAuth\JWTAuth;
 
 class AuthController extends Controller
 {
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function login()
     {
         return view('login');
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function webLogin(Request $request)
     {
         $credentials = $request->only(['username', 'password']);
@@ -32,6 +35,10 @@ class AuthController extends Controller
         }
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function apiLogin(Request $request)
     {
         $credentials = $request->only('username', 'password');
@@ -46,6 +53,10 @@ class AuthController extends Controller
         }
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function doRegister(Request $request)
     {
         try {
@@ -90,6 +101,10 @@ class AuthController extends Controller
         }
     }
 
+
+    /**
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function userinfo(){
         return success(auth()->user());
     }
