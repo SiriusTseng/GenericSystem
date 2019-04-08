@@ -18,3 +18,14 @@ Homestead.json
 
 # Rocketeer PHP task runner and deployment package. https://github.com/rocketeers/rocketeer
 .rocketeer/
+
+#除去宝塔生成的文件
+.user.ini
+index.html
+.htaccess
+
+#除去IDE文件
+.idea
+_ide_helper.php
+_ide_helper_models.php
+.phpstorm.meta.php
