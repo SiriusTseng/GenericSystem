@@ -17,7 +17,7 @@ class ResultSet
     public $msg;
 
     /**
-     * @var object|array|mixed|null
+     * @var mixed|null
      */
     public $data;
 
@@ -83,6 +83,7 @@ class ResultSet
      */
     public static function failure($code = 0, $msg = "Failure", $exception = null, $data = null)
     {
+        $msg=$msg?:"Failure";
         $errcode = config('errcode');
         if ($msg == "Failure" && isset($errcode[$code])) {
             $msg = $errcode[$code];
