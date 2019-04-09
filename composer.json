@@ -20,7 +20,8 @@
         "laravel/tinker": "^1.0",
         "spatie/laravel-permission": "^2.36",
         "tymon/jwt-auth": "^1.0",
-        "webpatser/laravel-uuid": "^3.0"
+        "webpatser/laravel-uuid": "^3.0",
+        "zuweie/field-interaction": "^1.0"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",

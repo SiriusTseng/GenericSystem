@@ -57,11 +57,12 @@ class GenericSystemAuthProvider implements UserProvider
      */
     public function retrieveByCredentials(array $credentials)
     {
-        if (empty($credentials) || (count($credentials) === 1 && array_key_exists('password', $credentials))) {
-            return null;
+        if (isset($credentials['username'])) {
+            return $this->model::where('username', $credentials['username'])
+                ->orWhere('email', $credentials['username'])
+                ->first();
         } else {
-            $username = $credentials['username'];
-            return $this->model::where('username', $username)->first();
+            return null;
         }
     }
 
