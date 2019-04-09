@@ -23,6 +23,7 @@ Homestead.json
 .user.ini
 index.html
 .htaccess
+404.html
 
 #除去IDE文件
 .idea
