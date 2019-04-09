@@ -16,14 +16,16 @@ use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Layout\Content;
 use Encore\Admin\Show;
-use Illuminate\Support\Facades\DB;
-use mysql_xdevapi\Exception;
+use Field\Interaction\FieldSubscriberTrait;
+use Field\Interaction\FieldTriggerTrait;
+
+use Field\Interaction\SubscribeScriptBuilder;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
-    use HasResourceActions;
+    use HasResourceActions,FieldSubscriberTrait,FieldTriggerTrait;
 
     /**
      * Index interface.
@@ -79,7 +81,10 @@ class UserController extends Controller
      */
     public function create(Content $content)
     {
-        abort(404);
+        return $content
+            ->header('用户')
+            ->description('创建')
+            ->body($this->form());
     }
 
     /**
@@ -124,8 +129,12 @@ class UserController extends Controller
     {
         $form = new Form(new User());
 
+        $form->ignore(['password_confirmation ']);
         $form->display('id', 'ID');
-
+        $form->email('email','邮箱');
+        $form->text('username','用户名');
+        $form->password('password','密码')->rules('confirmed',['confirmed'=>'两次密码输入不相同']);
+        $form->password('password_confirmation ','重复密码');
 
         $form->multipleSelect('roles', trans('admin.roles'))
             ->options(Role::all()->sortByDesc('id')->pluck('name', 'id'));
@@ -140,6 +149,20 @@ class UserController extends Controller
         $form->saved(function (Form $form) {
 //           if ($form->model()->role)
         });
+
+        $triggerScript=$this->createTriggerScript($form);
+        $subscribeScript=$this->createSubscriberScript($form,function (SubscribeScriptBuilder $builder){
+            $builder->subscribe('email','input',function ($event){
+
+                //abc@abc.com
+                return <<<EOT
+    function(data){
+        $('.username').val(data.split('@',1));
+    }
+EOT;
+            });
+        });
+        $form->scriptinjecter('name_no_care', $triggerScript, $subscribeScript);
         return $form;
     }
 }

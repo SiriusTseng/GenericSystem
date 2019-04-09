@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "55f0352d461ec6c2408b1160b8b79262",
+    "content-hash": "943cebc13023c482a985d4fec715a699",
     "packages": [
         {
             "name": "barryvdh/laravel-ide-helper",
@@ -4679,6 +4679,54 @@
                 "UUID RFC4122"
             ],
             "time": "2017-10-04T07:47:40+00:00"
+        },
+        {
+            "name": "zuweie/field-interaction",
+            "version": "1.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zuweie/FieldInteraction.git",
+                "reference": "342fbba053af6bd46fde428b55350847c577e6c2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zuweie/FieldInteraction/zipball/342fbba053af6bd46fde428b55350847c577e6c2",
+                "reference": "342fbba053af6bd46fde428b55350847c577e6c2",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://dl.laravel-china.org/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "encore/laravel-admin": "^1.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Field\\Interaction\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "zuweie",
+                    "email": "51930505@qq.com"
+                }
+            ],
+            "description": "make the laravel-admin field has a interaction",
+            "keywords": [
+                "fields interactive",
+                "form field",
+                "interaction",
+                "laravel admin"
+            ],
+            "time": "2019-01-25T11:36:32+00:00"
         }
     ],
     "packages-dev": [

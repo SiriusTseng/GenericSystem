@@ -19,3 +19,5 @@
  */
 
 Encore\Admin\Form::forget(['map', 'editor']);
+
+Encore\Admin\Form::extend('scriptinjecter', Field\Interaction\ScriptInjecter::class);
