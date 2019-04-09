@@ -321,6 +321,19 @@ return [
             'enable' => true,
         ],
 
+        //configx扩展 ichynul/configx
+        //usage: https://github.com/ichynul/configx
+        'configx' => [
+            // Set to `false` if you want to disable this extension
+            'enable' => true,
+            //
+            'tabs' => [
+                'base' => '基本设置'
+            ],
+            // Whether check group permissions. if (!Admin::user()->can('confix.tab.base')) {/*hide base tab*/ } .
+            'check_permission' => false
+        ],
+
 
     ],
 ];

@@ -12,6 +12,7 @@
         "barryvdh/laravel-ide-helper": "^2.6",
         "encore/laravel-admin": "^1.6",
         "fideloper/proxy": "^4.0",
+        "ichynul/configx": "^1.0",
         "laravel-admin-ext/config": "^1.0",
         "laravel-admin-ext/cropper": "1.0.2.1",
         "laravel-admin-ext/helpers": "^1.1",
